@@ -1,13 +1,10 @@
 import os
-from ez_setup import use_setuptools
-
-use_setuptools()
-
-from setuptools import setup, find_packages
+from distutils.core import setup
+from setuptools import find_packages
 
 APP_NAME = "AirbrakePy"
-VERSION = "1.0.0b2"
-SOURCE_URL = "http://github.com/pulseenergy/airbrakepy"
+VERSION = "1.1.0"
+SOURCE_URL = "https://github.com/Bounder/airbrakepy"
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -28,11 +25,13 @@ source_url='%(source_url)s'
 
 writeVersion()
 
+import airbrakepy
+
 setup(
     name="AirbrakePy",
     version=VERSION,
-    packages=find_packages(),
-    install_requires=["xmlbuilder >= 0.9, < 1.0"],
+    packages=find_packages(exclude=('test',)),
+    install_requires=[],
     author="Tim Meighen",
     author_email="tim at pulseenergy dot com",
     maintainer="Pulse Energy",
@@ -42,6 +41,8 @@ setup(
         "Development Status :: 3 - Alpha",
         "Topic :: System :: Logging",
         "License :: OSI Approved :: Apache Software License",
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 2.7',
         ],
     license="Apache License 2.0",
     keywords="airbrake python logging",
